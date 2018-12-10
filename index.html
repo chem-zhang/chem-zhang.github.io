@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+<div data-role="page" id="pageone">
+  <div data-role="header">
+  <h1>药品查询</h1>
+  </div>
+  <div data-role="content">
+   <form method="get" action="search.php">
+      <fieldset data-role="fieldcontain">
+        <label for="method">查询方法</label>
+        <select name="way" id="way">
+         <option value="Cname">中文名</option>
+         <option value="CAS">CAS</option>
+        </select>
+      </fieldset>
+       <div data-role="fieldcontain">
+        <label for="name">关键字：</label>
+        <input type="text" name="name" id="name"> 
+        <br>
+      <input type="submit" data-inline="true" value="搜索">
+      <a href="input.html" data-role="button" data-inline="true" >药品入库</a>
+      <a href="help.html" data-role="button" data-inline="true" >删除库存</a>
+    </form>
+    <br>
+    
+</div>
+  <div data-role="footer">
+  <h1>Chem-zhang</h1>
+  </div>
+</div> 
+</body>
+</html>
+
