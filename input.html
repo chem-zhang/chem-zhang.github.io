@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head>
+    <meta http-equiv="Content-Type" content="text/html; charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>药品查询</title>
+    <meta name="keywords" content="药品查询">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+function IsPC() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
+      $(document).ready(function(){
+        $("#search").css("height", ($(window).height()) + "px");
+        $("#search").css("margin-top", "-65px");
+        $('#search-btn').click(function(){
+        });
+        $.ajax({
+          type:"get",
+          url: "www.ashwoos.cc",
+          dataType: "json",
+          async:true,
+          success: function(a) {
+            $("#search").css("background", "#000000 url('"+a.url+"') no-repeat right center");
+          }
+        });
+      });
+    </script>
+
+<link rel="stylesheet" href="./index.min.css">
+</head>
+
+<body id="page-index">
+
+<header id="masthead" data-login-status="0">
+    <nav id="site-nav" class="navbar navbar-default">
+
+        <input type="checkbox" id="navbar-toggle" class="hidden">
+        <label for="navbar-toggle" class="visible-xs-inline-block"></label>
+
+        <div class="nav-links">
+            <ul class="nav list-unstyled">
+              <li><a href="http://www.chem-zhang.com/">课题组首页</a></li>
+                <li><a href="./input.html">药品入库</a></li>
+                <li><a href="./help.html">删除库存</a></li>
+                <li><a href="http://chem-zhang.github.io/">药品查询</a></li>
+            </ul>
+            <hr class="visible-xs">
+        </div>
+        <div id="anno-wrapper" class="clearfix">
+            <span id="anno-close" class="pull-right">×</span>
+        </div>
+    </nav>
+</header>
+<main>
+    <section id="search">
+        <div class="container">
+            <div class="absolute-center-input">
+                <div class="logo center-block">
+                    <h1>
+                        <a href="http://www.chem-zhang.com/" title="张礼知课题组">
+                            <img src="http://www.chem-zhang.com/Themes/default/images/logo.png" alt="&#39;zhidu logo">
+                        </a>
+                    </h1>
+                </div>
+               <div class="search-form form-inline">
+                    <div class="form-group">
+                        <label for="search-kw" class="hidden"></label>
+            <form action="http://chem-zhang.space/input.php" method="get" target="_blank">
+            <input class="form-control" type="hidden" name="input">
+                <p>CAS号</p>
+                        <input type="txt" id="CAS" class="form-control" name="CAS" placeholder="输入CAS号" autocomplete="on">
+                <p>中文名</p>
+                        <input type="txt" id="Cname" class="form-control" name="Cname" placeholder="输入中文名" autocomplete="on">
+                <p>存放地</p>
+                        <input type="txt" id="place" class="form-control" name="place" placeholder="输入存放地" autocomplete="on">
+                    </div>
+                    <p>
+                    <button type="submit" id="search-btn" class="btn btn-default">提交</button>
+                  </p>
+                </div>
+            <p>如果药品私用，存放地写自己的姓名</p>
+  <p>如果中文名中存在’这一符号，请勿输入此符号，如2,2'-联吡啶应输入2,2-联吡啶</p>
+  <a href="help.html">私用的药品用完了请点击此处删除库存</a>
+  <p>各柜分类：1-1：硫酸盐、1-2：氯化物、1-3&1-4：卤化物</p>
+  <p>2-1：硝酸盐、2-2：乙酸草酸盐、2-3：氧化物、2-4：其他金属盐</p>
+  <p>3-1：有机高聚物、3-2：常用有机化合物、3-3：有机酸、3-4：土&单质&其他</p>
+  <p>4-1：胺、4-2：氢氧化物、4-3：常用污染物、4-4：危化品</p>
+  <p>通风橱：1：酸、2：醇酮、3：苯胺、4：醛醚脂酚、5：烷&其他有机溶液</p>
+        <div class="center-block" id="dwzdate" style="padding: 15px; border: 1px solid transparent;margin-bottom: 20px;margin-top: 20px;background: rgba(132, 131, 137, 0.67); color: #FFF; font-size:16px;text-align:center;display:none;"></div>
+            </div>
+        </div>
+            </section>
+</body></html>

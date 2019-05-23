@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head>
+    <meta http-equiv="Content-Type" content="text/html; charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>药品查询</title>
+    <meta name="keywords" content="药品查询">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+function IsPC() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
+      $(document).ready(function(){
+        $("#search").css("height", ($(window).height()) + "px");
+        $("#search").css("margin-top", "-65px");
+        $('#search-btn').click(function(){
+        });
+        $.ajax({
+          type:"get",
+          url: "www.ashwoos.cc",
+          dataType: "json",
+          async:true,
+          success: function(a) {
+            $("#search").css("background", "#000000 url('"+a.url+"') no-repeat right center");
+          }
+        });
+      });
+    </script>
+
+<link rel="stylesheet" href="./index.min.css">
+</head>
+
+<body id="page-index">
+
+<header id="masthead" data-login-status="0">
+    <nav id="site-nav" class="navbar navbar-default">
+
+        <input type="checkbox" id="navbar-toggle" class="hidden">
+        <label for="navbar-toggle" class="visible-xs-inline-block"></label>
+
+        <div class="nav-links">
+            <ul class="nav list-unstyled">
+              <li><a href="http://www.chem-zhang.com/">课题组首页</a></li>
+                <li><a href="./input.html">药品入库</a></li>
+                <li><a href="./help.html">删除库存</a></li>
+                <li><a href="http://chem-zhang.github.io/">药品查询</a></li>
+            </ul>
+            <hr class="visible-xs">
+        </div>
+        <div id="anno-wrapper" class="clearfix">
+            <span id="anno-close" class="pull-right">×</span>
+        </div>
+    </nav>
+</header>
+<main>
+    <section id="search">
+        <div class="container">
+            <div class="absolute-center">
+                <div class="logo center-block">
+                    <h1>
+                        <a href="http://www.chem-zhang.com/" title="张礼知课题组">
+                            <img src="http://www.chem-zhang.com/Themes/default/images/logo.png" alt="&#39;zhidu logo">
+                        </a>
+                    </h1>
+                </div>
+               <div class="search-form form-inline">
+                    <div class="form-group">
+                        <label for="search-kw" class="hidden"></label>
+<p>Q:位置一栏具体如何对应？</p>
+  <p>A:1-3柜在414，进门从右往左依次为1，2，3</p>
+  <p>4柜在414角落，5柜对应右边通风橱下面（从门往里走分别为1234，5在左边最里面）</p>
+  <p>Q:查询不到某药品</p>
+  <p>A:去订购吧，到货后请点此<a href="input.html">录入</a></p>
+<B>删除库存</B>
+  <p>Q:查询到但是没找到对应药品</p>
+  <p>Q:我私用的药品用完了</p>  
+            <form action="http://chem-zhang.space/delet.php" method="get" target="_blank">
+            <input class="form-control" type="hidden" name="input">
+                <p>请输入待删除库存编号(<a href="index.html">查询库存编号</a>)</p>
+                        <input type="txt" id="id" class="form-control" name="id" placeholder="请输入待删除库存编号" autocomplete="on">
+                    <p>
+                    <button type="submit" id="search-btn" class="btn btn-default">删除</button>
+                  </p>
+                </div>
+        <div class="center-block" id="dwzdate" style="padding: 15px; border: 1px solid transparent;margin-bottom: 20px;margin-top: 20px;background: rgba(132, 131, 137, 0.67); color: #FFF; font-size:16px;text-align:center;display:none;"></div>
+            </div>
+        </div>
+            </section>
+</body></html>

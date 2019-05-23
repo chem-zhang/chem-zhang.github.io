@@ -1,40 +1,95 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-</head>
-<body>
-<div data-role="page" id="pageone">
-  <div data-role="header">
-  <h1>药品查询</h1>
-  </div>
-  <div data-role="content">
-   <form method="get" action="http://chem-zhang.space/search.php">
-      <fieldset data-role="fieldcontain">
-        <label for="method">查询方法</label>
-        <select name="way" id="way">
-         <option value="Cname">中文名</option>
-         <option value="CAS">CAS</option>
-        </select>
-      </fieldset>
-       <div data-role="fieldcontain">
-        <label for="name">关键字：</label>
-        <input type="text" name="name" id="name"> 
-        <br>
-      <input type="submit" data-inline="true" value="搜索">
-      <a href="http://chem-zhang.space/input.html" data-role="button" data-inline="true" >药品入库</a>
-      <a href="http://chem-zhang.space/help.html" data-role="button" data-inline="true" >删除库存</a>
-    </form>
-    <br>
-    
-</div>
-  <div data-role="footer">
-  <h1>Chem-zhang</h1>
-  </div>
-</div> 
-</body>
-</html>
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+ <head>
+    <meta http-equiv="Content-Type" content="text/html; charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>药品查询</title>
+    <meta name="keywords" content="药品查询">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+	<script>
+function IsPC() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
+			$(document).ready(function(){
+				$("#search").css("height", ($(window).height()) + "px");
+				$("#search").css("margin-top", "-65px");
+				$('#search-btn').click(function(){
+				});
+				$.ajax({
+					type:"get",
+					url: "www.ashwoos.cc",
+					dataType: "json",
+					async:true,
+					success: function(a) {
+						$("#search").css("background", "#000000 url('"+a.url+"') no-repeat right center");
+					}
+				});
+			});
+		</script>
 
+<link rel="stylesheet" href="./index.min.css">
+</head>
+
+<body id="page-index">
+
+<header id="masthead" data-login-status="0">
+    <nav id="site-nav" class="navbar navbar-default">
+
+        <input type="checkbox" id="navbar-toggle" class="hidden">
+        <label for="navbar-toggle" class="visible-xs-inline-block"></label>
+
+        <div class="nav-links">
+            <ul class="nav list-unstyled">
+            	<li><a href="http://www.chem-zhang.com/">课题组首页</a></li>
+                <li><a href="./input.html">药品入库</a></li>
+                <li><a href="./help.html">删除库存</a></li>
+                <li><a href="http://chem-zhang.github.io/">药品查询</a></li>
+            </ul>
+            <hr class="visible-xs">
+        </div>
+        <div id="anno-wrapper" class="clearfix">
+            <span id="anno-close" class="pull-right">×</span>
+        </div>
+    </nav>
+</header>
+<main>
+    <section id="search">
+        <div class="container">
+            <div class="absolute-center">
+                <div class="logo center-block">
+                    <h1>
+                        <a href="http://www.chem-zhang.com/" title="张礼知课题组">
+                            <img src="http://www.chem-zhang.com/Themes/default/images/logo.png" alt="&#39;zhidu logo">
+                        </a>
+                    </h1>
+                </div>
+               <div class="search-form form-inline">
+                    <div class="form-group">
+                        <label for="search-kw" class="hidden"></label>
+						<form action="http://chem-zhang.space/search.php" method="get" target="_blank">
+						<input class="form-control" type="hidden" name="show" value="title">
+                        <input type="txt" id="name" class="form-control" name="keyboard" placeholder="输入CAS号或中文名" autocomplete="off">
+                    </div>
+                    <button type="submit" id="search-btn" class="btn btn-default">搜索</button>
+                </div>
+				<div class="center-block" id="dwzdate" style="padding: 15px; border: 1px solid transparent;margin-bottom: 20px;margin-top: 20px;background: rgba(132, 131, 137, 0.67); color: #FFF; font-size:16px;text-align:center;display:none;"></div>
+            </div>
+        </div>
+    </section>
+
+</body></html>
