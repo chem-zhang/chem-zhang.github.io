@@ -2112,7 +2112,7 @@ input[type="radio"][disabled],input[type="radio"].disabled,fieldset[disabled] in
 .search-form .form-group {
 	position: relative;
 	display: inline-block;
-	width: calc(100% - 20px);
+	width: calc(100% - 60px);
 	vertical-align: middle
 }
 
